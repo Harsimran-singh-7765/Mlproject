@@ -3,14 +3,14 @@ import pandas as pd
 from src.Exception import CustomException
 import logging
 from src.utils import load_object
-
+import os
 class PredictPipeline:
     def __init__(self):
         pass 
     def predict(self,features):
         try:
             model_path=os.path.join("artifacts","model.pkl")
-            preprocessor_path=os.path.join('artifacts','preprocessor.pkl')
+            preprocessor_path=os.path.join('artifacts','proprocessor.pkl')
             print("Before Loading")
             model=load_object(file_path=model_path)
             preprocessor=load_object(file_path=preprocessor_path)
@@ -44,10 +44,10 @@ class CustomData:
         try:
             custom_data_input_dict = {
                 "gender": [self.gender],
-                "race_ethnicity": [self.race_ethnicity],
-                "parental_level_of_education": [self.parental_level_of_education],
+                "race/ethnicity": [self.race_ethnicity],
+                "parental level of education": [self.parental_level_of_education],
                 "lunch": [self.lunch],
-                "test_preparation_course": [self.test_preparation_course],
+                "test preparation course": [self.test_preparation_course],
                 "reading_score": [self.reading_score],
                 "writing_score": [self.writing_score],
             }
